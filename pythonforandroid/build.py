@@ -17,7 +17,6 @@ from pythonforandroid.recipe import Recipe
 
 DEFAULT_ANDROID_API = 15
 
-DEFAULT_NDK_API = 21
 
 
 class Context(object):
@@ -515,6 +514,8 @@ class Context(object):
         self.python_recipe = None  # Set by TargetPythonRecipe
 
     def set_archs(self, arch_names):
+        warning(arch_names);
+        warning(self.archs)
         all_archs = self.archs
         new_archs = set()
         for name in arch_names:

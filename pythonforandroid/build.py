@@ -17,7 +17,7 @@ from pythonforandroid.recipe import Recipe
 
 DEFAULT_ANDROID_API = 15
 
-
+DEFAULT_NDK_API = 21
 
 class Context(object):
     '''A build context. If anything will be built, an instance this class

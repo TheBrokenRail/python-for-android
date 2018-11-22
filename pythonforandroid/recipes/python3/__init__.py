@@ -67,7 +67,7 @@ class Python3Recipe(TargetPythonRecipe):
             env = arch.get_env()
 
             # TODO: Get this information from p4a's arch system
-            android_host = arch.toolchain_prefix
+            android_host = arch.command_prefix
             android_build = sh.Command(join(recipe_build_dir, 'config.guess'))().stdout.strip().decode('utf-8')
             
             # Manually add the libs directory, and copy some object

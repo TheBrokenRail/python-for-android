@@ -77,6 +77,8 @@ class Python3Recipe(TargetPythonRecipe):
             # TODO: Work out why this doesn't happen in the original
             # bpo-30386 Makefile system.
             logger.warning('Doing some hacky stuff to link properly')
+            sysroot = join(self.ctx.ndk_dir, 'platforms', platform_name, arch.platform_dir)
+            env['SYSROOT'] = sysroot
             lib_dir = join(sysroot, 'usr', 'lib')
             env['LDFLAGS'] += ' -L{}'.format(lib_dir)
             shprint(sh.cp, join(lib_dir, 'crtbegin_so.o'), './')

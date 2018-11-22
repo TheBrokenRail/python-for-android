@@ -83,6 +83,10 @@ class Python3Recipe(TargetPythonRecipe):
             env['LDFLAGS'] += ' -L{}'.format(lib_dir)
             shprint(sh.cp, join(lib_dir, 'crtbegin_so.o'), './')
             shprint(sh.cp, join(lib_dir, 'crtend_so.o'), './')
+            
+            env['PATH'] = '{hostpython_dir}:{old_path}'.format(
+                hostpython_dir=self.get_recipe('hostpython3', self.ctx).get_path_to_python(),
+                old_path=env['PATH'])
 
             if not exists('config.status'):
                 shprint(sh.Command(join(recipe_build_dir, 'configure')),
